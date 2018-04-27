@@ -1,10 +1,10 @@
 ### 关于浮点数比较(page97)
-``` hive >select name ,salary , taxes  from employee where taxes>0.2; ```
+``` hive >select name ,salary , taxes  from employee where taxes>0.2;  
    
-      ``` John Doe 10000.0 0.2 ```
+        John Doe 10000.0 0.2  
    
-      ``` Michael Man 8000.0 0.3 ```
-   
+        Michael Man 8000.0 0.3  
+```   
 **异常：查询结果出现0.2** 
 
 原因是hive 会将条件0.2这个值保留为double类型,而 taxes 字段原为float类型继而转成double。
