@@ -11,5 +11,7 @@ ps:设置属性```set hive.exec.mode.local.auto=true;``` hive会尝试使用本�
 ### join优化e ```(page103)```
 大多数情况下，hive会对每队join连接对象启动一个mapreduce任务<br>
 比如a,b,c三张表关联,会产生2个mapreduce job,但如果使用的关联字段是同一个,那么hive会自动优化,在同一个mapreduce job中连接三张表即只产生一个mapreduce job.<br><br>
-hive在对每行记录进行连接操作时，它会尝试将其他表缓存起来，然后扫描最后一个表进行计算。因此用户需要保证连续查询的表的大小从左到右是依次增加的。
-个人感觉这个说法不可靠,可参考[文章](http://blog.sina.com.cn/s/blog_6ff05a2c01016j7n.html)
+hive在对每行记录进行连接操作时，它会尝试将其他表缓存起来，然后扫描最后一个表进行计算。因此用户需要保证连续查询的表的大小从左到右是依次增加的。<br>
+也可以使用 ```/*STREAMTABLE(big_table_name)*/``` 来指定大表
+(个人感觉这个说法不可靠,可参考[文章](http://blog.sina.com.cn/s/blog_6ff05a2c01016j7n.html))
+
