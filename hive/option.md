@@ -15,3 +15,5 @@ hive >select name ,salary , taxes  from employee where taxes>0.2;
 - 2.taxes>0.2改为taxes>cast(0.2 as float)
 - 3.避免使用浮点数
 
+### 小技巧(page35)
+hive -S -e "set" |grep word 可找到包含word这个词的hive属性
