@@ -17,3 +17,10 @@ hive >select name ,salary , taxes  from employee where taxes>0.2;
 
 ### 小技巧(page35)
 hive -S -e "set" |grep word 可找到包含word这个词的hive属性
+
+### 关联时有表没有数据会报错
+报错信息：.HiveException: java.lang.NullPointerException at org.apache.hadoop.hive.ql.exec.spark.SparkMapRecordHandler.processRow(SparkMapRecordHandler.java:149) at 
+可以通过设置hive参数避免
+- 1.set hive.auto.convert.join=false;
+- 2.set hive.vectorized.execution.mapjoin.native.enabled=false
+
